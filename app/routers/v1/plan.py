@@ -17,17 +17,19 @@ router = APIRouter(
     tags=["Plans"],
 )
 
-@router.get("/today", response_model=PlanResponse)
+# @router.get("/today", response_model=PlanResponse)
+@router.post("/today", response_model=PlanResponse)
 def today(plan_credentials: PlanCredentialsRequest):
     try:
-        # return fetch_correct_plan_v1(plan_type=enum_v1.PlanType.today, username=plan_credentials.username, password=plan_credentials.password)
-        return fetch_correct_plan_v1(plan_type=enum_v1.PlanType.today, username="mmg-sus", password="Pinigo47watu&")
+        return fetch_correct_plan_v1(plan_type=enum_v1.PlanType.today, username=plan_credentials.username, password=plan_credentials.password)
+        # return fetch_correct_plan_v1(plan_type=enum_v1.PlanType.today, username="mmg-sus", password="Pinigo47watu&")
     except exception_v1.InvalidPlanCredentialsException:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=error_v1.INVALID_PLAN_CREDENTIALS)
     except:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-@router.get("/tomorrow", response_model=PlanResponse)
+# @router.get("/tomorrow", response_model=PlanResponse)
+@router.post("/tomorrow", response_model=PlanResponse)
 def tomorrow(plan_credentials: PlanCredentialsRequest):
     try:
         return fetch_correct_plan_v1(plan_type=enum_v1.PlanType.tomorrow, username=plan_credentials.username, password=plan_credentials.password)
