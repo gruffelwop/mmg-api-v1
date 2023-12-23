@@ -1,0 +1,6 @@
+NAME_NOT_FOUND = "Name not found"
+INVALID_PLAN_CREDENTIALS = "Invalid plan credentials"
+INVALID_PORTAL_CREDENTIALS = "Invalid portal credentials"
+INVALID_API_CREDENTIALS = "Invalid API credentials"
+EMAIL_ALREADY_USED = "Email already used"
+USERNAME_ALREADY_USED = "Username already used"
