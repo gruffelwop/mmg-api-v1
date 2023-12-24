@@ -37,3 +37,188 @@ def tomorrow(plan_credentials: PlanCredentialsRequest):
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=error_v1.INVALID_PLAN_CREDENTIALS)
     except:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+@router.post("/test")
+def test():
+    return {
+            "date": "2023-12-18",
+            "updated": "2023-12-16T19:50:00",
+            "substitutions": [
+                {
+                    "course": "",
+                    "hour": "8",
+                    "substitute_teacher": "entfällt",
+                    "subject": "VL",
+                    "room": "Mensa",
+                    "replaced_teacher": "HART"
+                },
+                {
+                    "course": "2ph1",
+                    "hour": "5",
+                    "substitute_teacher": "entfällt",
+                    "subject": "Ph",
+                    "room": "E131",
+                    "replaced_teacher": "LEHM"
+                },
+                {
+                    "course": "5D",
+                    "hour": "3",
+                    "substitute_teacher": "KRAM",
+                    "subject": "M",
+                    "room": "B09",
+                    "replaced_teacher": "LEHM"
+                },
+                {
+                    "course": "5d2",
+                    "hour": "5",
+                    "substitute_teacher": "KRAM",
+                    "subject": "D",
+                    "room": "B09",
+                    "replaced_teacher": "EISE"
+                },
+                {
+                    "course": "6C",
+                    "hour": "5",
+                    "substitute_teacher": "KREN",
+                    "subject": "E1",
+                    "room": "E140",
+                    "replaced_teacher": "GREI"
+                },
+                {
+                    "course": "6absm",
+                    "hour": "3",
+                    "substitute_teacher": "DOME",
+                    "subject": "Sm",
+                    "room": "rThJ",
+                    "replaced_teacher": "HART"
+                },
+                {
+                    "course": "7D",
+                    "hour": "5",
+                    "substitute_teacher": "FRON",
+                    "subject": "Mu",
+                    "room": "E119",
+                    "replaced_teacher": "SHWA"
+                },
+                {
+                    "course": "8B",
+                    "hour": "6",
+                    "substitute_teacher": "entfällt",
+                    "subject": "E1",
+                    "room": "A11",
+                    "replaced_teacher": "GREI"
+                },
+                {
+                    "course": "9A",
+                    "hour": "4",
+                    "substitute_teacher": "BODA",
+                    "subject": "B",
+                    "room": "C06",
+                    "replaced_teacher": "RAMI"
+                },
+                {
+                    "course": "9C",
+                    "hour": "6",
+                    "substitute_teacher": "entfällt",
+                    "subject": "Mu",
+                    "room": "E119",
+                    "replaced_teacher": "GORZ"
+                },
+                {
+                    "course": "10A",
+                    "hour": "5",
+                    "substitute_teacher": "EU",
+                    "subject": "PuG",
+                    "room": "B19",
+                    "replaced_teacher": "VOGH"
+                },
+                {
+                    "course": "2b1",
+                    "hour": "5",
+                    "substitute_teacher": "entfällt",
+                    "subject": "B",
+                    "room": "E141",
+                    "replaced_teacher": "RAMI"
+                },
+                {
+                    "course": "5D",
+                    "hour": "2",
+                    "substitute_teacher": "MÄRK",
+                    "subject": "D",
+                    "room": "B09",
+                    "replaced_teacher": "EISE"
+                },
+                {
+                    "course": "5d1",
+                    "hour": "6",
+                    "substitute_teacher": "KRAM",
+                    "subject": "D",
+                    "room": "B09",
+                    "replaced_teacher": "EISE"
+                },
+                {
+                    "course": "5d2",
+                    "hour": "6",
+                    "substitute_teacher": "KRAM",
+                    "subject": "E1",
+                    "room": "B09",
+                    "replaced_teacher": "KRAM"
+                },
+                {
+                    "course": "6D",
+                    "hour": "3",
+                    "substitute_teacher": "GRAF",
+                    "subject": "D",
+                    "room": "A02",
+                    "replaced_teacher": "GREI"
+                },
+                {
+                    "course": "6absm",
+                    "hour": "4",
+                    "substitute_teacher": "DOME",
+                    "subject": "Sm",
+                    "room": "rThJ",
+                    "replaced_teacher": "HART"
+                },
+                {
+                    "course": "8A",
+                    "hour": "4",
+                    "substitute_teacher": "HASL",
+                    "subject": "D",
+                    "room": "A12",
+                    "replaced_teacher": "EISE"
+                },
+                {
+                    "course": "8D",
+                    "hour": "1",
+                    "substitute_teacher": "REIT",
+                    "subject": "L2",
+                    "room": "E140",
+                    "replaced_teacher": "EISE"
+                },
+                {
+                    "course": "9B",
+                    "hour": "4",
+                    "substitute_teacher": "HÖLZ",
+                    "subject": "Mu",
+                    "room": "C07",
+                    "replaced_teacher": "GORZ"
+                },
+                {
+                    "course": "10A",
+                    "hour": "4",
+                    "substitute_teacher": "EU",
+                    "subject": "D",
+                    "room": "B19",
+                    "replaced_teacher": "VOGH"
+                },
+                {
+                    "course": "10cdntg",
+                    "hour": "6",
+                    "substitute_teacher": "entfällt",
+                    "subject": "Ph",
+                    "room": "E133",
+                    "replaced_teacher": "LEHM"
+                }
+            ]
+        }
