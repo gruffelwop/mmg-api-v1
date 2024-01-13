@@ -36,27 +36,61 @@ def fetch_correct_plan(plan_type: enum_v1.PlanType, username: str, password: str
 
     # ic(planDateTodayOrLastSchoolDay)
 
-    # View 1:
+        # View 1:
     if plan_type == enum_v1.PlanType.today:
         if weekday == 5 or weekday == 6: # Saturday or Sunday
+            if nextWeekDay == planDateTodayOrLastSchoolDay:
+                return get_plan_from_soup_v1(soup=todayOrLastSchoolDayHTML, timestamp=planDateTodayOrLastSchoolDay)
             if nextWeekDay == planDateNextSchoolDay:
                 return get_plan_from_soup_v1(soup=nextSchoolDayHTML, timestamp=planDateNextSchoolDay)
+            if nextWeekDay == planDateSchoolDayAfterNextSchoolDay:
+                return get_plan_from_soup_v1(soup=schoolDayAfterNextSchoolDayHTML, timestamp=planDateSchoolDayAfterNextSchoolDay)
         else:
             if today == planDateTodayOrLastSchoolDay:
                 return get_plan_from_soup_v1(soup=todayOrLastSchoolDayHTML, timestamp=planDateTodayOrLastSchoolDay)
             if today == planDateNextSchoolDay:
                 return get_plan_from_soup_v1(soup=nextSchoolDayHTML, timestamp=planDateNextSchoolDay)
+            if today == planDateSchoolDayAfterNextSchoolDay:
+                return get_plan_from_soup_v1(soup=schoolDayAfterNextSchoolDayHTML, timestamp=planDateSchoolDayAfterNextSchoolDay)
 
     # View 2:
     if plan_type == enum_v1.PlanType.tomorrow:
         if weekday == 5 or weekday == 6: # Saturday or Sunday
+            if weekDayAfterNextWeekDay == planDateTodayOrLastSchoolDay:
+                return get_plan_from_soup_v1(soup=todayOrLastSchoolDayHTML, timestamp=planDateTodayOrLastSchoolDay)
+            if weekDayAfterNextWeekDay == planDateNextSchoolDay:
+                return get_plan_from_soup_v1(soup=nextSchoolDayHTML, timestamp=planDateNextSchoolDay)
             if weekDayAfterNextWeekDay == planDateSchoolDayAfterNextSchoolDay:
                 return get_plan_from_soup_v1(soup=schoolDayAfterNextSchoolDayHTML, timestamp=planDateSchoolDayAfterNextSchoolDay)
         else:
+            if nextWeekDay == planDateTodayOrLastSchoolDay:
+                return get_plan_from_soup_v1(soup=todayOrLastSchoolDayHTML, timestamp=planDateTodayOrLastSchoolDay)
             if nextWeekDay == planDateNextSchoolDay:
                 return get_plan_from_soup_v1(soup=nextSchoolDayHTML, timestamp=planDateNextSchoolDay)
             if nextWeekDay == planDateSchoolDayAfterNextSchoolDay:
                 return get_plan_from_soup_v1(soup=schoolDayAfterNextSchoolDayHTML, timestamp=planDateSchoolDayAfterNextSchoolDay)
+
+    # # View 1:
+    # if plan_type == enum_v1.PlanType.today:
+    #     if weekday == 5 or weekday == 6: # Saturday or Sunday
+    #         if nextWeekDay == planDateNextSchoolDay:
+    #             return get_plan_from_soup_v1(soup=nextSchoolDayHTML, timestamp=planDateNextSchoolDay)
+    #     else:
+    #         if today == planDateTodayOrLastSchoolDay:
+    #             return get_plan_from_soup_v1(soup=todayOrLastSchoolDayHTML, timestamp=planDateTodayOrLastSchoolDay)
+    #         if today == planDateNextSchoolDay:
+    #             return get_plan_from_soup_v1(soup=nextSchoolDayHTML, timestamp=planDateNextSchoolDay)
+
+    # # View 2:
+    # if plan_type == enum_v1.PlanType.tomorrow:
+    #     if weekday == 5 or weekday == 6: # Saturday or Sunday
+    #         if weekDayAfterNextWeekDay == planDateSchoolDayAfterNextSchoolDay:
+    #             return get_plan_from_soup_v1(soup=schoolDayAfterNextSchoolDayHTML, timestamp=planDateSchoolDayAfterNextSchoolDay)
+    #     else:
+    #         if nextWeekDay == planDateNextSchoolDay:
+    #             return get_plan_from_soup_v1(soup=nextSchoolDayHTML, timestamp=planDateNextSchoolDay)
+    #         if nextWeekDay == planDateSchoolDayAfterNextSchoolDay:
+    #             return get_plan_from_soup_v1(soup=schoolDayAfterNextSchoolDayHTML, timestamp=planDateSchoolDayAfterNextSchoolDay)
 
     return {
         "date": unix_epoch,
