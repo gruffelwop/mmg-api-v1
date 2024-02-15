@@ -24,7 +24,7 @@ def get_student_absences(portal_credentials: PortalCredentialsRequest):
     try:
         return selenium_fetch_portal_absences_v1(email=portal_credentials.email, password=portal_credentials.password, name=portal_credentials.name)
     except exception_v1.InvalidPortalCredentialsException:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=error_v1.INVALID_PORTAL_CREDENTIALS)
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=error_v1.INVALID_PORTAL_CREDENTIALS)
     except exception_v1.NameNotFoundException:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=error_v1.NAME_NOT_FOUND)
     except:

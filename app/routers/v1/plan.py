@@ -20,21 +20,25 @@ router = APIRouter(
 # @router.get("/today", response_model=PlanResponse)
 @router.post("/today", response_model=PlanResponse)
 def today(plan_credentials: PlanCredentialsRequest):
+    if plan_credentials.username.strip() == "" or plan_credentials.password.strip() == "":
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=error_v1.INVALID_PLAN_CREDENTIALS)
     try:
         return fetch_correct_plan_v1(plan_type=enum_v1.PlanType.today, username=plan_credentials.username, password=plan_credentials.password)
         # return fetch_correct_plan_v1(plan_type=enum_v1.PlanType.today, username="mmg-sus", password="Pinigo47watu&")
     except exception_v1.InvalidPlanCredentialsException:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=error_v1.INVALID_PLAN_CREDENTIALS)
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=error_v1.INVALID_PLAN_CREDENTIALS)
     except:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 # @router.get("/tomorrow", response_model=PlanResponse)
 @router.post("/tomorrow", response_model=PlanResponse)
 def tomorrow(plan_credentials: PlanCredentialsRequest):
+    if plan_credentials.username.strip() == "" or plan_credentials.password.strip() == "":
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=error_v1.INVALID_PLAN_CREDENTIALS)
     try:
         return fetch_correct_plan_v1(plan_type=enum_v1.PlanType.tomorrow, username=plan_credentials.username, password=plan_credentials.password)
     except exception_v1.InvalidPlanCredentialsException:
-        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail=error_v1.INVALID_PLAN_CREDENTIALS)
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=error_v1.INVALID_PLAN_CREDENTIALS)
     except:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
